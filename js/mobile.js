@@ -67,23 +67,42 @@ $(function () {
 });
 
 $(document).ready(function () {
+  let isFullpageInitialized = false;
+  let resizeTimer;
+
   function initFullpage() {
-    if ($(window).width() >= 1024) {
-      $("#fullpage").fullpage({
-        licenseKey: "OPEN-SOURCE-GPLV3-LICENSE",
-        autoScrolling: true,
-        scrollHorizontally: true,
-        scrollOverflow: false,
-        scrollOverflowReset: true,
-      });
+    const winWidth = $(window).width();
+
+    if ($("#fullpage").length === 0) return;
+
+    if (winWidth > 1023) {
+      if (!isFullpageInitialized) {
+        $("#fullpage").fullpage({
+          licenseKey: "OPEN-SOURCE-GPLV3-LICENSE",
+          autoScrolling: true,
+          scrollHorizontally: true,
+          scrollOverflow: false,
+          scrollOverflowReset: true,
+        });
+        isFullpageInitialized = true;
+      }
     } else {
-      fullpage_api.destroy("all");
+      if (
+        isFullpageInitialized &&
+        typeof fullpage_api !== "undefined" &&
+        typeof fullpage_api.destroy === "function"
+      ) {
+        fullpage_api.destroy("all");
+        isFullpageInitialized = false;
+      }
     }
   }
+
   initFullpage();
 
   $(window).resize(function () {
-    initFullpage();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(initFullpage, 300); // 디바운싱
   });
 });
 
