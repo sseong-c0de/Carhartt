@@ -66,43 +66,47 @@ $(function () {
   });
 });
 
-$(document).ready(function () {
-  let isFullpageInitialized = false;
-  let resizeTimer;
+let isFullpageInitialized = false;
+let isReloaded = false;
+let lastWidth = $(window).width();
 
-  function initFullpage() {
-    const winWidth = $(window).width();
+function initFullpage() {
+  const winWidth = $(window).width();
 
-    if ($("#fullpage").length === 0) return;
-
-    if (winWidth > 1023) {
-      if (!isFullpageInitialized) {
-        $("#fullpage").fullpage({
-          licenseKey: "OPEN-SOURCE-GPLV3-LICENSE",
-          autoScrolling: true,
-          scrollHorizontally: true,
-          scrollOverflow: false,
-          scrollOverflowReset: true,
-        });
-        isFullpageInitialized = true;
-      }
-    } else {
-      if (
-        isFullpageInitialized &&
-        typeof fullpage_api !== "undefined" &&
-        typeof fullpage_api.destroy === "function"
-      ) {
-        fullpage_api.destroy("all");
-        isFullpageInitialized = false;
-      }
+  if (winWidth >= 1024) {
+    if (!isFullpageInitialized) {
+      $("#fullpage").fullpage({
+        licenseKey: "OPEN-SOURCE-GPLV3-LICENSE",
+        autoScrolling: true,
+        scrollHorizontally: true,
+        scrollOverflow: false,
+        scrollOverflowReset: true,
+      });
+      isFullpageInitialized = true;
+    }
+  } else {
+    if (isFullpageInitialized && typeof fullpage_api !== "undefined") {
+      fullpage_api.destroy("all");
+      isFullpageInitialized = false;
     }
   }
+}
 
+$(document).ready(function () {
   initFullpage();
 
   $(window).resize(function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(initFullpage, 300); // 디바운싱
+    const currentWidth = $(window).width();
+
+    // 1024 미만 → 1024 이상 진입했을 때 딱 한 번 새로고침
+    if (lastWidth < 1024 && currentWidth >= 1024 && !isReloaded) {
+      isReloaded = true;
+      location.reload();
+      return;
+    }
+
+    lastWidth = currentWidth;
+    initFullpage();
   });
 });
 
