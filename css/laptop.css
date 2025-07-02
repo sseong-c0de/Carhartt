@@ -393,7 +393,7 @@
   .story_img {
     width: 48%;
     height: 400px;
-    background: url(../image/uv95ea7pqrzs.jpg) no-repeat center 90% / cover;
+    background: url(../image/uv95ea7pqrzs.webp) no-repeat center 90% / cover;
   }
   .story_img:nth-child(2) {
     background: url(../image/carhartt\ work.jpg) no-repeat center/cover;
@@ -450,16 +450,16 @@
   }
 
   .men > .category_bg {
-    background: url(../image/category/mann.png) no-repeat center 10% / cover;
+    background: url(../image/category/mann.webp) no-repeat center 10% / cover;
   }
   .women > .category_bg {
-    background: url(../image/category/womenn.png) no-repeat center 10% / cover;
+    background: url(../image/category/womenn.webp) no-repeat center 10% / cover;
   }
   .cap > .category_bg {
-    background: url(../image/category/category.png) no-repeat center 5% / cover;
+    background: url(../image/category/category.webp) no-repeat center 5% / cover;
   }
   .bag > .category_bg {
-    background: url(../image/category/bag.png) no-repeat center 20% / cover;
+    background: url(../image/category/bag.webp) no-repeat center 20% / cover;
   }
   /* .men_product:nth-child(2),.men_product:nth-child(3){
 	display: none;
@@ -595,7 +595,7 @@
   .collection_wrap {
     margin-top: 0;
     height: 100%;
-    background: url(../image/Rectangle.png) no-repeat center/cover;
+    background: url(../image/Rectangle.webp) no-repeat center/cover;
   }
   .s4 .text_box {
     margin-top: 0;
