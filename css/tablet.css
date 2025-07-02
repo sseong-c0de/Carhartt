@@ -18,8 +18,7 @@
     top: 0;
     z-index: 100;
   }
-  .header_center {
-  }
+
   .h1_wrap {
     position: absolute;
     top: 0;
@@ -123,8 +122,6 @@
     height: 100%;
     font-size: 1.8rem;
   }
-  .gnb > li > a {
-  }
 
   /* 하위메뉴 */
   .gnb > li > ul {
@@ -222,8 +219,6 @@
     width: 93.489%;
     background: url(../image/upscale/carhartt_2.jpg) no-repeat center 40% /
       cover;
-  }
-  .polygon {
   }
 
   .rect_carhartt,
@@ -631,8 +626,7 @@
     height: 900px;
     text-align: center;
   }
-  .collabo_wrap {
-  }
+
   .collabo_wrap > .text_box h2 {
     font-size: 4.2rem;
     margin-top: -525px;
@@ -700,10 +694,7 @@
     padding-top: 123px;
     z-index: 5;
   }
-  .news_img_wrap {
-    /* width: 100%;
-	height:100%; */
-  }
+
   .news_box {
     position: relative;
   }
